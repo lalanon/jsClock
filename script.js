@@ -1,17 +1,46 @@
 "use strict";
 
+var wakeUpTime = 8;
+var goToSleepTime = 22;
+
 function init() {
-    setInterval(displayClock, 1000);
+    setInterval(updateClocks, 1000);
+
+    var statusLineSelector =  document.getElementById("statusLineSelector");
+
+    var wakeUpTimeSelector =  document.getElementById("wakeUpTimeSelector");
+    wakeUpTimeSelector.addEventListener("change", wakeUpEvent);
+
+    var goToSleepSelector =  document.getElementById("goToSleepSelector");
+    goToSleepSelector.addEventListener("change", goToSleepEvent);
+
+    updateClocks();
+    updateStatusLine();
 }
 
-function displayClock() {
+function wakeUpEvent() {
+    wakeUpTime = wakeUpTimeSelector.value;
+    updateStatusLine();
+}
+
+function goToSleepEvent() {
+    goToSleepTime = goToSleepSelector.value;
+    updateStatusLine();
+}
+
+function updateStatusLine() {
+    statusLineSelector.innerText = "Waking up at: " + formatTime(wakeUpTime) 
+                                + " and going back to bed at: " + formatTime(goToSleepTime);
+}
+function updateClocks() {
     var clock = document.getElementById("clock");
     var timer = new Date;
     var hour = formatTime(timer.getHours());
     var minutes = formatTime(timer.getMinutes());
     var seconds = formatTime(timer.getSeconds());
 
-    clock.innerHTML = hour + ":" + minutes + ":" + seconds;
+    clock.innerText = hour + ":" + minutes + ":" + seconds;
+    
 }
 
 function formatTime(i) {
