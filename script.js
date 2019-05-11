@@ -1,7 +1,11 @@
 "use strict";
 
+//globals
 var wakeUpTime = 8;
 var goToSleepTime = 22;
+
+//debug switch
+var DEBUG = true;
 
 function init() {
     setInterval(updateClocks, 1000);
@@ -16,6 +20,9 @@ function init() {
 
     updateClocks();
     updateStatusLine();
+
+    //debug message
+    if (DEBUG) {console.log("Init done, the page is running.");}
 }
 
 function wakeUpEvent() {
