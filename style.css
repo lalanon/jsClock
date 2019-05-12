@@ -1,6 +1,11 @@
 body {
     background: rgb(90, 90, 90);
-}.page {
+    font-family: 'Stylish', sans-serif;
+    /*background-image: linear-gradient(yellow, red);*/
+}
+
+.page {
+    /*background: rgba(128, 128, 128, 0.5);*/
     background: gray;
     text-align: center;
     width: 80%;
@@ -14,6 +19,12 @@ h1 {
 }
 
 #clock {
+    font-family: 'Courier New', Courier, monospace;
     font-size: 4em;
     font-style: bold;
+}
+
+#wakeUpTimeSelector,
+#goToSleepSelector, {
+    padding: 10px 0;
 }
