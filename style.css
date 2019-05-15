@@ -12,14 +12,17 @@ body {
 
 .page {
     /*background: rgba(128, 128, 128, 0.5);*/
+    display: grid;
+    grid-template-columns: 1fr 3fr;
     background: gray;
-    text-align: center;
     width: 80%;
+    min-height: 450px;
     max-width: 600px;
     margin: 50px auto;
     border-radius: 10px;
 }
 h1 {
+    margin: 0 0 0 10px;
     font-size: 3em;
     color: rgba(255, 0, 0, 0.6);
 }
@@ -35,12 +38,14 @@ h1 {
     padding: 10px 0;
 }
 
-footer {
-    background: rgb(175, 175, 175);
-    border-radius: 0 0 10px 10px;
+#main {
+    padding: 10px;
+    text-align: center;
 }
 
-header {
+#sidebar {
     background: rgb(175, 175, 175);
-    border-radius: 10px 10px 0 0; 
+    border-radius: 10px 0 0 10px; 
+    padding: 10px;
+    text-align: right;
 }
