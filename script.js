@@ -5,11 +5,13 @@ var wakeUpTime = 8;
 var goToSleepTime = 22;
 var activeAlarm = false;
 
+const updateInterval = 500;
+
 //debug switch
 var DEBUG = true;
 
 function init() {
-    setInterval(updateClocks, 1000);
+    setInterval(updateClocks, updateInterval);
 
     var statusLineSelector =  document.getElementById("statusLineSelector");
     var greetingLineSelector = document.getElementById("greetingLineSelector");
@@ -24,7 +26,7 @@ function init() {
     updateStatusLine();
 
     //debug message
-    if (DEBUG) {console.log("Init done, the page is running.");}
+    if (DEBUG) {console.log("DEBUG: Init done, the page is running.");}
 }
 
 function wakeUpEvent() {
@@ -32,7 +34,7 @@ function wakeUpEvent() {
     updateStatusLine();
 
     //debug message
-    if (DEBUG) {console.log("wakeUpEvent occured.");}
+    if (DEBUG) {console.log("DEBUG: UwakeUpEvent occured.");}
 }
 
 function goToSleepEvent() {
@@ -40,12 +42,15 @@ function goToSleepEvent() {
     updateStatusLine();
 
     //debug message
-    if (DEBUG) {console.log("goToSleep occured.");}
+    if (DEBUG) {console.log("DEBUG: goToSleep occured.");}
 }
 
 function updateStatusLine() {
     statusLineSelector.innerText = "Waking up at: " + formatTime(wakeUpTime) 
                                 + " and going back to bed at: " + formatTime(goToSleepTime);
+                                
+    //debug message
+    if (DEBUG) {console.log("DEBUG: Status line updated.");
 }
 function updateClocks() {
     var clock = document.getElementById("clock");
@@ -59,12 +64,14 @@ function updateClocks() {
 
     if ((timer.getHours() === parseInt(wakeUpTime)) && (activeAlarm === false)) {
         alert(hour + " o'clock - time to wake up!");
+        wakeUpAlarm();
         activeAlarm = true;
         if (DEBUG) {console.log("WakeUp alarm triggered!")}
     }
     
     if ((timer.getHours() === parseInt(goToSleepTime)) && (activeAlarm === false)) {
         alert(hour + " o'clock - time to go to bed!");
+        goToSleepAlarm();
         activeAlarm = true;
         if (DEBUG) {console.log("goToSleep alarm triggered!")}
     }
@@ -85,7 +92,7 @@ function wakeUpAlarm() {
     console.log("Good morning!");
 }
 
-function wakeUpAlarm() {
+function goToSleepAlarm() {
     console.log("Good night!");
 }
 
